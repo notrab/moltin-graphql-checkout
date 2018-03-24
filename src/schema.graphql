@@ -1,0 +1,54 @@
+type Query {
+  products: [Product]
+}
+
+type Mutation {
+  Checkout(
+    token: String!
+    productId: ID!
+    customer: Customer!
+    billingAddress: Address!
+    shippingAddress: Address
+  ): Order
+}
+
+type Order {
+  id: ID!
+}
+
+type Product {
+  id: ID!
+  name: String!
+  slug: String!
+  sku: String!
+  description: String!
+  status: ActiveStatus!
+  price: [ProductPrice]
+}
+
+type ProductPrice {
+  amount: Int!
+  currency: String
+  includes_tax: Boolean!
+}
+
+enum ActiveStatus {
+  draft
+  live
+}
+
+input Customer {
+  name: String!
+  email: String!
+}
+
+input Address {
+  first_name: String!
+  last_name: String!
+  line_1: String!
+  line_2: String
+  city: String
+  postcode: String!
+  county: String!
+  country: String!
+}

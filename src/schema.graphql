@@ -24,6 +24,7 @@ type Product {
   description: String!
   status: ActiveStatus!
   price: [ProductPrice]
+  image: String
 }
 
 type ProductPrice {

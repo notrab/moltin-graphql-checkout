@@ -21,7 +21,7 @@ export default async (parent, args, ctx: Context, info) => {
       .Cart(cartId)
       .Checkout(customer, billing, shipping)
 
-    await moltin.Orders.Payment(order.id, {
+    await moltin.Orders.Payment(order.data.id, {
       gateway: 'stripe',
       method: 'purchase',
       payment: token
